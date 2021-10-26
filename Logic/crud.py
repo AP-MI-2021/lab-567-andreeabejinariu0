@@ -31,3 +31,13 @@ def update(lista_obiecte: list, new_object):
             result.append(obiect)
 
     return result
+
+def delete(lista_obiecte, id_obiect: int):
+    result = []
+
+    for obiect in lista_obiecte:
+        if get_id(obiect) != id_obiect:
+            result.append(obiect)
+
+    return result
+
