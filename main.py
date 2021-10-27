@@ -1,5 +1,5 @@
 
-from Domain.obiect import getNewObject, get_name, get_object_string
+from Domain.obiect2 import getNewObject, get_name, get_object_string
 from Logic.crud import create, read, update
 lista =[]
 

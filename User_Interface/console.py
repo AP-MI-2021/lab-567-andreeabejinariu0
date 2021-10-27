@@ -1,4 +1,4 @@
-from Domain.obiect import getNewObject
+from Domain.obiect2 import getNewObject
 from Logic.crud import create, read, update, delete
 
 
@@ -38,7 +38,7 @@ def header():
                 pret_achizitie = int(input(f'Dati pretul achizitiei obiectului {pozitie}: '))
                 locatie = input(f'Dati locatia (formata din 4 caractere) obiectului {pozitie}: ')
                 lista = create(lista, id2, nume, descriere, pret_achizitie, locatie)
-            print (lista)
+            print(lista)
 
         elif obtiune == '3':
             read_id = int(input('Dati id-ul obiectului pe care doriti sa il vedeti: '))
@@ -65,7 +65,7 @@ def header():
         elif obtiune == 'x':
             break
         else:
-            print ('Obtiune invalida. Incercati altceva!')
+            print('Obtiune invalida. Incercati altceva!')
 
 
 header()
