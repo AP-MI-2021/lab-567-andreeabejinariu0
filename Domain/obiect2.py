@@ -1,6 +1,5 @@
 
-
-lista_obiecte= []
+lista_obiecte = []
 
 
 def get_all_object():

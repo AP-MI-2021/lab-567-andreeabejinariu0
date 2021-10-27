@@ -22,14 +22,14 @@ def test_create():
 
 
 def test_read():
-    lista =get_data()
+    lista = get_data()
     random_object = lista[2]
     assert read(lista, get_id(random_object)) == random_object
     assert read(lista, None) == lista
 
 
 def test_update():
-    lista =get_data()
+    lista = get_data()
     new_object = getNewObject(5, 'hartie', 'desc 6', 32, 'Floresti')
     lista_noua = update(lista, new_object)
     assert len(lista) == len(lista_noua)
@@ -45,10 +45,12 @@ def test_delete():
     assert len(lista_noua) == len(lista) - 1
     assert deleted_object not in lista_noua
 
+
 def test_crud():
     test_create()
     test_read()
     test_update()
     test_delete()
+
 
 test_crud()

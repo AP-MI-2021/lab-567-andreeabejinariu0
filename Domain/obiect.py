@@ -8,7 +8,6 @@ def get_all_object():
 
 def getNewObject(_id: int, _nume: str, _descriere: str, _pret: int, _locatie: str):
     '''
-
     :param _id: int
     :param _nume: string
     :param _descriere: string

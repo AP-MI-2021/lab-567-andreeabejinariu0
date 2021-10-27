@@ -25,7 +25,7 @@ def header():
                 nume = input(f'Dati numele obiectului {pozitie}: ')
                 descriere = input(f'Dati descrierea obiectului {pozitie}: ')
                 pret_achizitie = int(input(f'Dati pretul achizitiei obiectului {pozitie}: '))
-                locatie = input(f'Dati locatia (formata din 4 caractere) obiectului {pozitie}: ')
+                locatie = input(f'Dati locatia obiectului {pozitie}: ')
                 lista = create(lista, id1, nume, descriere, pret_achizitie, locatie)
             print(lista)
 
@@ -36,7 +36,7 @@ def header():
                 nume = input(f'Dati numele obiectului {pozitie}: ')
                 descriere = input(f'Dati descrierea obiectului {pozitie}: ')
                 pret_achizitie = int(input(f'Dati pretul achizitiei obiectului {pozitie}: '))
-                locatie = input(f'Dati locatia (formata din 4 caractere) obiectului {pozitie}: ')
+                locatie = input(f'Dati locatia  obiectului {pozitie}: ')
                 lista = create(lista, id2, nume, descriere, pret_achizitie, locatie)
             print(lista)
 
@@ -52,7 +52,7 @@ def header():
             nume = input(f'Dati numele obiectului: ')
             descriere = input(f'Dati descrierea obiectului: ')
             pret_achizitie = int(input(f'Dati pretul achizitiei obiectului: '))
-            locatie = input(f'Dati locatia (formata din 4 caractere) obiectului: ')
+            locatie = input(f'Dati locatia  obiectului: ')
             update_obiect = getNewObject(id, nume, descriere, pret_achizitie, locatie)
             update_list = update(lista, update_obiect)
             print(update_list)

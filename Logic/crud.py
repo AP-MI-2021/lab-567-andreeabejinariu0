@@ -8,10 +8,10 @@ def create(lista_obiecte: list, _id: int, _nume: str, _descriere: str, _pret: in
     return lista_obiecte + [obiect]
 
 
-def read(lista_obiecte: list, id_obiect: int=None):
+def read(lista_obiecte: list, id_obiect: int = None):
     obiect_gasit = None
 
-    if id_obiect == None:
+    if id_obiect is None:
         return lista_obiecte
 
     for obiect in lista_obiecte:
