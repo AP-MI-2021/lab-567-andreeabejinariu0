@@ -1,7 +1,7 @@
 from Domain.obiect2 import get_location, getNewObject, get_name, get_id, get_description, get_price
 
 
-def mutare_obiecte_din_locatie(lista , locatie, destinatie ):
+def mutare_obiecte_din_locatie(lista, locatie, destinatie):
     '''
     Mutarea obiectelor din lista din aceeasi locatie in alta
     :param lista: lista obiectelor
