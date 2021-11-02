@@ -1,6 +1,7 @@
 from Domain.obiect2 import get_object_string, get_name, get_description, get_price, get_location, getNewObject
 from Logic.crud import create, read, update, delete
 from Logic.mutare import mutare_obiecte_din_locatie
+from Logic.concatenare import concatenare_str_dupa_pret_citit
 
 def show_menu():
     print("1. CRUD")
@@ -99,10 +100,22 @@ def handle_mutare(obiecte):
         print("Obiectul s-a mutat din locatia initiala in destinatie")
 
     except ValueError as ve:
-        print('Eroare ', ve)
+        print('Eroare: ', ve)
 
     return obiecte
 
+
+def handle_concatenare(obiecte):
+    try:
+        pret = int(input("Dati pretul unui obiect: "))
+        string = input("Dati mesajul care doriti sa se concateneze la descriere: ")
+        obiecte = concatenare_str_dupa_pret_citit(obiecte, pret, string)
+
+        print("Concatenarea stringurilor a avut loc")
+    except ValueError as ve:
+        print('Eroare: ', ve)
+
+    return obiecte
 
 def run_ui(obiecte):
 
@@ -113,6 +126,8 @@ def run_ui(obiecte):
             obiecte = handle_crud(obiecte)
         elif optiune == '2':
             obiecte = handle_mutare(obiecte)
+        elif optiune == '3':
+            obiecte = handle_concatenare(obiecte)
         elif optiune == 'x':
             break
         else:

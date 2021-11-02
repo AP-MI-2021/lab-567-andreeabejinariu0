@@ -16,7 +16,7 @@ def getNewObject(_id: int, _nume: str, _descriere: str, _pret: int, _locatie: st
     :return: o lista
     '''
 
-    obiect = [_id, _nume, _descriere, _pret, _locatie]
+    obiect = [_id, _nume, _descriere, _pret, _locatie.zfill(4)]
 
     return obiect
 

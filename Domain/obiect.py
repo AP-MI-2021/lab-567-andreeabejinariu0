@@ -20,7 +20,7 @@ def getNewObject(_id: int, _nume: str, _descriere: str, _pret: int, _locatie: st
         'nume': _nume,
         'descriere': _descriere,
         'pret': _pret,
-        'locatie': _locatie
+        'locatie': _locatie.zfill(4)
     }
     return obiect
 
