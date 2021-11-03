@@ -9,7 +9,7 @@ def mutare_obiecte_din_locatie(lista, locatie, destinatie):
     :param destinatie: locatia finala
     :return:lista obiectelor modificata
     '''
-    if len(locatie) != 4 or len(destinatie) != 4:
+    if locatie == '' or destinatie == ' ' or len(locatie) != 4 or len(destinatie) != 4:
         raise ValueError(f'Locatia a fost introdusa gresit! Trebuie sa aiba exact 4 caractere!')
 
     result = []

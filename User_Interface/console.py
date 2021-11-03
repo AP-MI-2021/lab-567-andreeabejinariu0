@@ -3,6 +3,7 @@ from Logic.crud import create, read, update, delete
 from Logic.mutare import mutare_obiecte_din_locatie
 from Logic.concatenare import concatenare_str_dupa_pret_citit
 
+
 def show_menu():
     print("1. CRUD")
     print("2. Mutarea tuturor obiectelor dintr-o locație în alta.")
@@ -17,16 +18,16 @@ def handle_add(obiecte):
         descriere = input("Dati descrierea obiectului: ")
         pret = int(input("Dati pretul de achizitie al obiectului: "))
         locatie = input("Dati locatia obiectului: ")
-        return create(obiecte, id_obiect, nume, descriere, pret, locatie )
-    except ValueError as ve :
+        return create(obiecte, id_obiect, nume, descriere, pret, locatie)
+    except ValueError as ve:
         print('Eroare: ', ve)
 
     return obiecte
 
 
 def handle_show_all(obiecte):
-    for obiect in obiecte:
-        print(get_object_string(obiect))
+    for element in obiecte:
+        print(get_object_string(element))
 
 
 def handle_show_details(obiecte):
@@ -45,7 +46,7 @@ def handle_update(obiecte):
         descriere = input("Dati noua descriere obiectului: ")
         pret = int(input("Dati noul  pretul de achizitie al obiectului: "))
         locatie = input("Dati noua locatia a obiectului: ")
-        return update(obiecte, getNewObject(id_obiect, nume, descriere, pret, locatie) )
+        return update(obiecte, getNewObject(id_obiect, nume, descriere, pret, locatie))
     except ValueError as ve:
         print('Eroare: ', ve)
 
@@ -62,6 +63,7 @@ def handle_delete(obiecte):
         print('Eroare: ', ve)
 
     return obiecte
+
 
 def handle_crud(obiecte):
     while True:
@@ -116,6 +118,7 @@ def handle_concatenare(obiecte):
         print('Eroare: ', ve)
 
     return obiecte
+
 
 def run_ui(obiecte):
 

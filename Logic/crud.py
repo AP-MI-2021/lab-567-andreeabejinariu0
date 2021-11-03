@@ -5,8 +5,7 @@ def create(lista_obiecte: list, _id: int, _nume: str, _descriere: str, _pret: in
     if read(lista_obiecte, _id) is not None:
         raise ValueError(f'Exista deja un obiect cu id-ul {_id}!')
 
-    if len(_locatie) != 4:
-        raise ValueError(f'Locatie introdusa gresit! Trebuie sa aiba exact 4 caractere! ')
+
 
     obiect = getNewObject(_id, _nume, _descriere, _pret, _locatie)
     # lista_obiecte.append(obiect)

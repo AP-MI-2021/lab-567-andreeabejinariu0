@@ -1,7 +1,7 @@
 
 from Domain.obiect2 import getNewObject, get_location
 from Logic.crud import create, read, update
-from User_Interface.console import run_ui
+from User_Interface.console2 import header
 lista = []
 
 #lista = create(lista, 1, 'birou', 'primul obiect', 150, 'Cluj')
@@ -22,4 +22,4 @@ lista = create(lista, 1, 'birou', 'primul obiect', 150, 'Cluj')
 lista = create(lista, 2, 'hartie', 'bax hartie', 36, 'Cluj')
 lista= create(lista, 3, 'carte', "desc2", 41, 'Iasi')
 lista = create(lista, 4 , 'jocuri', 'desc3', 54, 'Sala')
-lista = run_ui(lista)
+lista = header(lista)

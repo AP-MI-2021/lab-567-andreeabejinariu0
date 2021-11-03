@@ -1,7 +1,7 @@
 from Domain.obiect2 import get_price, get_description, get_id, get_name, get_location, getNewObject
 
 
-def concatenare_str_dupa_pret_citit(lista, pret, string):
+def concatenare_str_dupa_pret_citit(lista, string, pret):
     '''
     Concatenarea unui string citit de la tastura la descrierea obiectelor cu pretul mai mare decat cel dat
     :param lista: lista obiectelor
@@ -9,6 +9,9 @@ def concatenare_str_dupa_pret_citit(lista, pret, string):
     :param string: mesajul care se va concatena la descriere
     :return: lista obiectelor modificata
     '''
+    if type(pret) is not int:
+        raise ValueError('Dati id-ul un numar intreg!')
+
     result = []
     descriere = ''
     for element in lista:
