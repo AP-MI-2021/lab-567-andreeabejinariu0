@@ -84,6 +84,7 @@ def help():
     print('6. - exemplu : 6,string(str- stringul pe care dorim sa il adaugam),pret(int-pretul cu care vom compara)')
     print('7. - exemplu : 7')
     print('8. - exemplu : 8')
+    print('9. - exemplu : 9')
     print('a. - exemplu : a')
     print('x. - exemplu : x')
     print('Dati comenzile urmate de datele aferente dupa modelul de mai sus separate prin ";"!')
