@@ -2,12 +2,14 @@ from Domain.obiect2 import get_object_string, get_name, get_description, get_pri
 from Logic.crud import create, read, update, delete
 from Logic.mutare import mutare_obiecte_din_locatie
 from Logic.concatenare import concatenare_str_dupa_pret_citit
+from Logic.cmmpret_locatie import cel_mai_mare_pret_locatie
 
 
 def show_menu():
     print("1. CRUD")
     print("2. Mutarea tuturor obiectelor dintr-o locație în alta.")
     print("3. Concatenarea unui string citit la  descrierile obiectelor cu prețul mai mare decât o valoare citită.")
+    print("4. Determinarea celui mai mare preț pentru fiecare locație.")
     print("x. Iesire")
 
 
@@ -120,6 +122,17 @@ def handle_concatenare(obiecte):
     return obiecte
 
 
+def handle_cmmpret_locatie(obiecte):
+    try:
+        rezultat = cel_mai_mare_pret_locatie(obiecte)
+        for locatie in rezultat:
+            print("Pentru locatia:{} cel mai mare pret il contine obiectul este"
+                  ": {}".format(locatie, rezultat[locatie]))
+    except ValueError as ve:
+        print('Eroare: ', ve)
+
+    return obiecte
+
 def run_ui(obiecte):
 
     while True:
@@ -131,6 +144,8 @@ def run_ui(obiecte):
             obiecte = handle_mutare(obiecte)
         elif optiune == '3':
             obiecte = handle_concatenare(obiecte)
+        elif optiune == '4':
+            obiecte = handle_cmmpret_locatie(obiecte)
         elif optiune == 'x':
             break
         else:

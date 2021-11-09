@@ -3,6 +3,7 @@ from Domain.obiect2 import getNewObject
 from Logic.mutare import mutare_obiecte_din_locatie
 from Logic.concatenare import concatenare_str_dupa_pret_citit
 from Logic.crud import create, read, update, delete
+from Logic.cmmpret_locatie import cel_mai_mare_pret_locatie
 
 
 def handle_add(lista, lista_date):
@@ -64,6 +65,7 @@ def showmenu():
     print('4.Stergerea unui obiect cu id-ul dat de la tastatura')
     print('5.Mutarea unor obiecte dintr-o locatie in alta')
     print('6.Concatenarea unui string citit la toate descrierile obiectelor cu prețul mai mare decât o valoare citită.')
+    print('7.Determinarea celui mai mare preț pentru fiecare locație.')
     print('a.Afisarea listei de obiecte')
     print('x.Iesire')
 
@@ -76,6 +78,7 @@ def help():
     print('4. - exemplu : 4,id(int)')
     print('5. - exemplu : 5,locatie(str-locatia de unde vrem sa mutam),destinatie(str-locatia unde vrem sa mutam)')
     print('6. - exemplu : 6,string(str- stringul pe care dorim sa il adaugam),pret(int-pretul cu care vom compara)')
+    print('7. - exemplu : 7')
     print('a. - exemplu : a')
     print('x. - exemplu : x')
     print('Dati comenzile urmate de datele aferente dupa modelul de mai sus separate prin ";"!')
@@ -104,6 +107,16 @@ def handle_concatenare(lista, lista_date):
         print('Eroare: ', ve)
     return lista
 
+def handle_cmmpret_locatie(lista):
+    try:
+        rezultat = cel_mai_mare_pret_locatie(lista)
+        for locatie in rezultat:
+            print("Pentru locatia:{} cel mai mare pret il contine obiectul este"
+                  ": {}".format(locatie, rezultat[locatie]))
+    except ValueError as ve:
+        print('Eroare: ', ve)
+    return  lista
+
 
 def header(lista):
     while True:
@@ -126,6 +139,8 @@ def header(lista):
                 lista = handle_change_location(lista, lista_date)
             elif obtiune == '6':
                 lista = handle_concatenare(lista, lista_date)
+            elif obtiune == '7':
+                lista = handle_cmmpret_locatie(lista)
             elif obtiune == 'a':
                 print(lista)
             elif obtiune == 'x':
