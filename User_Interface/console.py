@@ -4,6 +4,7 @@ from Logic.mutare import mutare_obiecte_din_locatie
 from Logic.concatenare import concatenare_str_dupa_pret_citit
 from Logic.cmmpret_locatie import cel_mai_mare_pret_locatie
 from Logic.ordonare import ordonare_pret
+from Logic.suma import suma_preturi_ptr_locatie
 
 
 def show_menu():
@@ -12,6 +13,7 @@ def show_menu():
     print("3. Concatenarea unui string citit la  descrierile obiectelor cu prețul mai mare decât o valoare citită.")
     print("4. Determinarea celui mai mare preț pentru fiecare locație.")
     print("5. Ordonarea obiectelor crescător după prețul de achiziție.")
+    print("6. Afișarea sumelor prețurilor pentru fiecare locație.")
     print("x. Iesire")
 
 
@@ -142,7 +144,20 @@ def handle_ordonare(obiecte):
         print("Ordonarea dupa pretul de achizitie a avut loc")
     except ValueError as ve:
         print('Eroare:', ve)
-    return  obiecte
+    return obiecte
+
+
+def handle_suma(obiecte):
+    try:
+        rezultat = suma_preturi_ptr_locatie(obiecte)
+        for locatie in rezultat:
+            print("Pentru locatia:{} suma preturilor este"
+                  ": {}".format(locatie, rezultat[locatie]))
+    except ValueError as ve:
+        print('Eroare: ', ve)
+
+    return obiecte
+
 
 def run_ui(obiecte):
 
@@ -159,6 +174,8 @@ def run_ui(obiecte):
             obiecte = handle_cmmpret_locatie(obiecte)
         elif optiune == '5':
             obiecte = handle_ordonare(obiecte)
+        elif optiune == '6':
+            obiecte = handle_suma(obiecte)
         elif optiune == 'x':
             break
         else:
