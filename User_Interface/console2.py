@@ -4,6 +4,7 @@ from Logic.mutare import mutare_obiecte_din_locatie
 from Logic.concatenare import concatenare_str_dupa_pret_citit
 from Logic.crud import create, read, update, delete
 from Logic.cmmpret_locatie import cel_mai_mare_pret_locatie
+from Logic.ordonare import ordonare_pret
 
 
 def handle_add(lista, lista_date):
@@ -13,7 +14,7 @@ def handle_add(lista, lista_date):
         descriere = lista_date[3]
         pret_achizitie = int(lista_date[4])
         locatie = lista_date[5]
-        return create(lista ,id, nume, descriere, pret_achizitie, locatie)
+        return create(lista, id, nume, descriere, pret_achizitie, locatie)
     except ValueError as ve:
         print('Eroare: ', ve)
     return lista
@@ -79,11 +80,12 @@ def help():
     print('5. - exemplu : 5,locatie(str-locatia de unde vrem sa mutam),destinatie(str-locatia unde vrem sa mutam)')
     print('6. - exemplu : 6,string(str- stringul pe care dorim sa il adaugam),pret(int-pretul cu care vom compara)')
     print('7. - exemplu : 7')
+    print('8. - exemplu : 8')
     print('a. - exemplu : a')
     print('x. - exemplu : x')
     print('Dati comenzile urmate de datele aferente dupa modelul de mai sus separate prin ";"!')
     print('Exemplu: 2,3;a;4,1')
-    print('Exemplu: 2,4;a')
+    print('Exemplu: 2,4;a;8;a')
     #print('Exemplu: 6,'as',50;a')
     #print('Exemplu: 1,5,'masa','desc5',59,'ARAD';2,3;a')
 
@@ -107,6 +109,7 @@ def handle_concatenare(lista, lista_date):
         print('Eroare: ', ve)
     return lista
 
+
 def handle_cmmpret_locatie(lista):
     try:
         rezultat = cel_mai_mare_pret_locatie(lista)
@@ -115,7 +118,16 @@ def handle_cmmpret_locatie(lista):
                   ": {}".format(locatie, rezultat[locatie]))
     except ValueError as ve:
         print('Eroare: ', ve)
-    return  lista
+    return lista
+
+
+def handle_ordonare(lista):
+    try:
+        lista = ordonare_pret(lista)
+        print("Ordonarea dupa pretul de achizitie a avut loc")
+    except ValueError as ve:
+        print('Eroare:', ve)
+    return lista
 
 
 def header(lista):
@@ -141,6 +153,8 @@ def header(lista):
                 lista = handle_concatenare(lista, lista_date)
             elif obtiune == '7':
                 lista = handle_cmmpret_locatie(lista)
+            elif obtiune == '8':
+                lista = handle_ordonare(lista)
             elif obtiune == 'a':
                 print(lista)
             elif obtiune == 'x':
