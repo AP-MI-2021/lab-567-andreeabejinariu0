@@ -189,17 +189,6 @@ def handle_redo(list_versions, current_version):
     return list_versions[current_version], current_version
 
 
-def handle_redo(list_versions, current_version):
-    try:
-        if current_version >= len(list_versions) - 1:
-            print("Nu se mai poate face redo.")
-            return list_versions[current_version], current_version
-        current_version += 1
-        return list_versions[current_version], current_version
-    except ValueError as ve:
-        print('Eroare: ', ve)
-
-
 def run_ui(obiecte):
     list_versions = [obiecte]
     current_version = 0
@@ -227,10 +216,8 @@ def run_ui(obiecte):
             list_versions, current_version = handle_new_list(list_versions, current_version, obiecte)
         elif optiune == 'u':
             obiecte, current_version = handle_undo(list_versions, current_version)
-            print('Undo efectuat cu succes!')
         elif optiune == 'r':
             obiecte, current_version = handle_redo(list_versions, current_version)
-            print('Redo efectuat cu succes!')
         elif optiune == 'x':
             break
         else:
