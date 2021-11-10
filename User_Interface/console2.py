@@ -70,6 +70,8 @@ def showmenu():
     print('7.Determinarea celui mai mare preț pentru fiecare locație.')
     print('8.Ordonarea obiectelor crescător după prețul de achiziție.')
     print('9.Afișarea sumelor prețurilor pentru fiecare locație.')
+    print("u. Undo")
+    print("r. Redo")
     print('a.Afisarea listei de obiecte')
     print('x.Iesire')
 
@@ -85,6 +87,8 @@ def help():
     print('7. - exemplu : 7')
     print('8. - exemplu : 8')
     print('9. - exemplu : 9')
+    print('u. - exemplu : u')
+    print('r. - exemplu : r')
     print('a. - exemplu : a')
     print('x. - exemplu : x')
     print('Dati comenzile urmate de datele aferente dupa modelul de mai sus separate prin ";"!')
@@ -145,7 +149,39 @@ def handle_suma(lista):
 
     return lista
 
+
+def handle_new_list(list_versions, current_version, lista):
+    while current_version < len(list_versions) - 1:
+        list_versions.pop()
+    list_versions.append(lista)
+    current_version += 1
+    return list_versions, current_version
+
+
+def handle_undo(list_versions, current_version):
+    if current_version < 1:
+        print("Nu se mai poate face undo.")
+        return [], 0
+    else:
+        print("Undo efectuat cu succes!")
+    current_version -= 1
+    return list_versions[current_version], current_version
+
+
+def handle_redo(list_versions, current_version):
+    if current_version == len(list_versions) - 1:
+        print("Nu se mai poate face redo.")
+        return list_versions[current_version], current_version
+    else:
+        print('Redo efectuat cu succes!')
+    current_version += 1
+    return list_versions[current_version], current_version
+
+
 def header(lista):
+    list_versions = [lista]
+    current_version = 0
+
     while True:
         showmenu()
         help()
@@ -156,24 +192,38 @@ def header(lista):
             obtiune = lista_date[0]
             if obtiune == '1':
                 lista = handle_add(lista, lista_date)
+                list_versions, current_version = handle_new_list(list_versions, current_version, lista)
             elif obtiune == '2':
                 print(handle_read(lista, lista_date))
+                list_versions, current_version = handle_new_list(list_versions, current_version, lista)
             elif obtiune == '3':
                 lista = handle_update(lista, lista_date)
+                list_versions, current_version = handle_new_list(list_versions, current_version, lista)
             elif obtiune == '4':
                 lista = handle_delete(lista, lista_date)
+                list_versions, current_version = handle_new_list(list_versions, current_version, lista)
             elif obtiune == '5':
                 lista = handle_change_location(lista, lista_date)
+                list_versions, current_version = handle_new_list(list_versions, current_version, lista)
             elif obtiune == '6':
                 lista = handle_concatenare(lista, lista_date)
+                list_versions, current_version = handle_new_list(list_versions, current_version, lista)
             elif obtiune == '7':
                 lista = handle_cmmpret_locatie(lista)
+                list_versions, current_version = handle_new_list(list_versions, current_version, lista)
             elif obtiune == '8':
                 lista = handle_ordonare(lista)
+                list_versions, current_version = handle_new_list(list_versions, current_version, lista)
             elif obtiune == '9':
                 lista = handle_suma(lista)
+                list_versions, current_version = handle_new_list(list_versions, current_version, lista)
             elif obtiune == 'a':
                 print(lista)
+                list_versions, current_version = handle_new_list(list_versions, current_version, lista)
+            elif obtiune == 'u':
+                lista, current_version = handle_undo(list_versions, current_version)
+            elif obtiune == 'r':
+                lista, current_version = handle_redo(list_versions, current_version)
             elif obtiune == 'x':
                 break
             else:
